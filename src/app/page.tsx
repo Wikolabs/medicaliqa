@@ -1,4 +1,4 @@
-export default function Home() {
+﻿export default function Home() {
   const color = "#3b82f6";
   const colorLight = "#eff6ff";
   const colorDark = "#1d4ed8";
@@ -156,6 +156,13 @@ export default function Home() {
             <a href="mailto:team@wikolabs.com" style={{ color: "#93c5fd", textDecoration: "none" }}>team@wikolabs.com</a>
             {" · "}
             <a href="https://wikolabs.com" target="_blank" rel="noopener noreferrer" style={{ color: "#93c5fd", textDecoration: "none" }}>wikolabs.com</a>
+          </p>
+          <p style={{ color: "#93c5fd", marginTop: 8, fontSize: 13, display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap" }}>
+            <a href="mailto:team@wikolabs.com" style={{ color: "#93c5fd", textDecoration: "none" }}>team@wikolabs.com</a>
+            <span>·</span>
+            <a href="tel:+261386626100" style={{ color: "#93c5fd", textDecoration: "none" }}>+261 38 66 261 00</a>
+            <span>·</span>
+            <a href="https://calendly.com/wikolabs" target="_blank" rel="noopener noreferrer" style={{ color: "#93c5fd", textDecoration: "none" }}>Prendre RDV</a>
           </p>
           <p style={{ fontSize: 13, color: "#3b82f6" }}>© 2026 Wikolabs. Tous droits réservés.</p>
         </div>
