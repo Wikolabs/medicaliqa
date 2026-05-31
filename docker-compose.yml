@@ -1,0 +1,36 @@
+version: "3.9"
+
+# MedicalIQA demo - production-ready POC.
+# 2 services orchestrated:
+#   - medicaliqa (Next.js frontend on host port 3043)
+#   - medicaliqa-backend (FastAPI Python, internal only on 8000)
+# Internal network so the frontend can reach the backend by service name.
+
+services:
+  medicaliqa-backend:
+    image: ghcr.io/wikolabs/medicaliqa-backend:latest
+    container_name: medicaliqa-backend
+    restart: unless-stopped
+    environment:
+      GROQ_API_KEY: ${GROQ_API_KEY:-}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+    networks:
+      - medicaliqa-net
+
+  medicaliqa:
+    image: ghcr.io/wikolabs/medicaliqa:latest
+    container_name: medicaliqa
+    restart: unless-stopped
+    ports:
+      - "3043:3000"
+    environment:
+      BACKEND_URL: "http://medicaliqa-backend:8000"
+    depends_on:
+      - medicaliqa-backend
+    networks:
+      - medicaliqa-net
+
+networks:
+  medicaliqa-net:
+    name: medicaliqa-net
+    driver: bridge
